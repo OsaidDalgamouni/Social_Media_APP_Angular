@@ -1,0 +1,36 @@
+<div class="card mb-4" *ngIf="member">
+    <div class="card-img-warpper">
+        <img style="width: 100%;" src="{{member.photoUrl}}" alt="{{member.knownas}}">
+        <ul class="list-inline member-icons animate text-center">
+            <li class="list-inline-item">
+                <button routerLink="../members/{{member.username}}" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                  </svg></button>
+            </li>
+            <li class="list-inline-item">
+                <button (click)="addLike(member)" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                  </svg></button>
+            </li>
+            <li class="list-inline-item">
+                <button
+                routerLink="/members/{{member.username}}"
+                [queryParams]="{tab:'Messages'}"
+                 class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                  </svg>
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body p-1">
+        <h6 class="h6 card-title text-center mb-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+              </svg>
+            {{member.knownas}},{{member.age}}
+        </h6>
+        <p class="card-text card-muted text-center">{{member.city}}</p>
+    </div>
+
+</div>

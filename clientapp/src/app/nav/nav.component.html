@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+<div class="container-fluid">
+   <a class="navbar-brand"routerLink="/"routerLinkActive="active">social media app</a>
+   
+    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <ng-container *ngIf="currenuser$|async">
+            <li class="nav-item">
+                <a class="nav-link " routerLink="/members"routerLinkActive="active">Mathces</a>
+            </li>  
+            <li class="nav-item">
+               <a class="nav-link "routerLink="/lists"routerLinkActive="active">Lists</a>
+           </li>
+           <li class="nav-item">
+               <a class="nav-link "  routerLink="messages" routerLinkActive="active">Messages</a>
+           </li> 
+        </ng-container>
+        <li class="nav-item">
+            <a class="nav-link "  routerLink="/error" routerLinkActive="active">error</a>
+        </li> 
+    
+   
+    </ul>
+    <div class="dropdown"dropdown *ngIf="(currenuser$|async)as auth">
+        <img src="{{auth.photoUrl}}" alt="UserPhoto">
+        <a  class="dropdown-toggle text-light" dropdownToggle>Weclome{{auth.knownAS}} </a>
+        <div class="dropdown-menu" *dropdownMenu>
+            <a class="dropdown-item" routerLink="../member/edit">Edit Profile</a>
+            <a class="dropdown-item" (click)="Logout()">Logout</a>
+        </div>
+    </div>
+    <form *ngIf="!(currenuser$|async) " #loginform="ngForm" class="d-flex" (ngSubmit)="Login(user)" autocomplete="off" >
+     <input name="username" [(ngModel)]="user.username" class="form-control me-2" type="text" placeholder="UserName">
+     <input name="password" [(ngModel)]="user.password" class="form-control me-2" type="password" placeholder="password">
+     <button class="btn btn-success" type="submit">Login</button>
+
+    </form>
+
+   
+</div> 
+</nav>
